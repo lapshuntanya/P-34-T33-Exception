@@ -1,6 +1,7 @@
 #pragma once
 #include<iostream>
 #include<string>
+#include "MobileException.h"
 
 using std::cout;
 using std::cin;
