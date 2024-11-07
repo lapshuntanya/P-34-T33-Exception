@@ -28,3 +28,27 @@ public:
 		return "NameException: " + text + ".\nName: " + name + ".\n\n";
 	}
 };
+
+class PriceException : public MobileException {
+	float price;
+public:
+	PriceException(string text, float price) : MobileException(text) {
+		this->price = price;
+	}
+	string showMessage()const override {
+		return "PriceException: " + text + ".\nPrice: " + 
+			std::to_string(price) + ".\n\n";
+	}
+};
+
+class SecondsException : public MobileException {
+	int seconds;
+public:
+	SecondsException(string text, int seconds) : MobileException(text) {
+		this->seconds = seconds;
+	}
+	string showMessage()const override {
+		return "SecondsException: " + text + ".\nSeconds: " +
+			std::to_string(seconds) + ".\n\n";
+	}
+};
