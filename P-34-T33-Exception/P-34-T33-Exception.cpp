@@ -59,10 +59,24 @@ using std::cin;
 int main() {
 	Provider kyivstar("Kyivstar");
 
-	kyivstar.addTariff(new SecondsTariff("Day", 0.01));
-	kyivstar.addTariff(new MinutesTariff("Night", 0.7));
-	kyivstar.addTariff(new SecondsTariff("", -67));
+	try { kyivstar.addTariff(new SecondsTariff("Day", 0.01)); }
+	catch (MobileException* obj) { cout << obj->showMessage(); delete obj; }
 
+	try { kyivstar.addTariff(new MinutesTariff("Night", 0.7)); }
+	catch (MobileException* obj) { cout << obj->showMessage(); delete obj; }
+	
+	try {kyivstar.addTariff(new SecondsTariff("", 67));
+	}catch (MobileException* obj) { cout << obj->showMessage(); delete obj; }
+
+	try {
+		kyivstar.addTariff(new SecondsTariff("Student", -67));
+	}	catch (MobileException* obj) { cout << obj->showMessage(); delete obj; }
+
+	try { kyivstar.addTariff(new MinutesTariff("Night XXX", 0.7)); }
+	catch (MobileException* obj) { cout << obj->showMessage(); delete obj; }
+
+	try { kyivstar.addTariff(new MinutesTariff("Teacher", 0.5)); }
+	catch (MobileException* obj) { cout << obj->showMessage(); delete obj; }
 
 	cout << "----------------------------------------\n\n";
 	kyivstar.showList();
